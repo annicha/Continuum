@@ -27,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-378" y="3"/>
         </scene>
-        <!--Post List Table View Controller-->
+        <!--Post-->
         <scene sceneID="D8p-J7-UcS">
             <objects>
                 <tableViewController id="qLN-Hv-vdm" customClass="PostListTableViewController" customModule="Continuum" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,14 +36,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SE8-Id-7IB">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="365" id="SE8-Id-7IB" customClass="PostTableViewCell" customModule="Continuum" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="365"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SE8-Id-7IB" id="mVK-La-S0B">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SE8-Id-7IB" id="mVK-La-S0B" customClass="PostTableViewCell" customModule="Continuum" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="364.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spaceEmptyState" translatesAutoresizingMaskIntoConstraints="NO" id="Txz-rR-uso">
+                                            <rect key="frame" x="62.5" y="21" width="250" height="250.00000000000011"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Txz-rR-uso" secondAttribute="height" multiplier="1:1" id="2el-72-3VT"/>
+                                                <constraint firstAttribute="height" constant="250" id="Bzo-YJ-Jsf"/>
+                                                <constraint firstAttribute="width" constant="250" id="JGN-l6-rEp"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jso-B8-aiZ">
+                                            <rect key="frame" x="20" y="281" width="335" height="73.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="(Caption)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6a-TQ-t1A">
+                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments: (Comment Count)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLH-un-n0T">
+                                                    <rect key="frame" x="0.0" y="53" width="335" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Txz-rR-uso" firstAttribute="top" secondItem="mVK-La-S0B" secondAttribute="topMargin" constant="10" id="1cN-Z1-Ne2"/>
+                                        <constraint firstItem="jso-B8-aiZ" firstAttribute="top" secondItem="Txz-rR-uso" secondAttribute="bottom" constant="10" id="MUl-yb-1KH"/>
+                                        <constraint firstItem="Txz-rR-uso" firstAttribute="centerX" secondItem="mVK-La-S0B" secondAttribute="centerX" id="QpK-yJ-uTe"/>
+                                        <constraint firstAttribute="bottom" secondItem="jso-B8-aiZ" secondAttribute="bottom" constant="10" id="fnw-dk-ifB"/>
+                                        <constraint firstItem="jso-B8-aiZ" firstAttribute="leading" secondItem="mVK-La-S0B" secondAttribute="leading" constant="20" id="i1g-mt-UkS"/>
+                                        <constraint firstAttribute="trailing" secondItem="jso-B8-aiZ" secondAttribute="trailing" constant="20" id="z6B-81-WW5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="captionLabel" destination="y6a-TQ-t1A" id="gn7-iF-LDp"/>
+                                    <outlet property="commentsCountLabel" destination="gLH-un-n0T" id="Kq5-Ta-UF1"/>
+                                    <outlet property="postImageView" destination="Txz-rR-uso" id="7DH-8h-pgj"/>
                                     <segue destination="fKE-nY-OPI" kind="show" id="HfH-NJ-1vT"/>
                                 </connections>
                             </tableViewCell>
@@ -53,7 +91,7 @@
                             <outlet property="delegate" destination="qLN-Hv-vdm" id="vvu-Bd-DtN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PLf-vE-ibI"/>
+                    <navigationItem key="navigationItem" title="Post" id="PLf-vE-ibI"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LV7-Ub-ws6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -156,4 +194,7 @@
             <point key="canvasLocation" x="534" y="421"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="spaceEmptyState" width="1024" height="569"/>
+    </resources>
 </document>
