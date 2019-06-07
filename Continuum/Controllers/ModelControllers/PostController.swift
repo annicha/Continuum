@@ -16,9 +16,12 @@ class PostController {
     var posts: [Post] = []
     
     // MARK: - CRUD Functions
-    func addComment(fromText text: String, toPost post: Post, completion: @escaping(Comment) -> Void){
+    
+    /* Create */
+    func addComment(fromText text: String, toPost post: Post, completion: @escaping(Comment?) -> Void){
         let newComment = Comment(text: text, timestamp: Date(), post: post)
         newComment.post?.comments += [newComment]
+        print(post.comments.count)
         // waiting CloudKit completion
     }
     
@@ -26,5 +29,10 @@ class PostController {
         let newPost = Post(photo: image, timestamp: Date(), caption: caption)
         self.posts += [newPost]
         // waiting CloudKit completion
+    }
+    
+    /* Remove */
+    func remove(post: Post){
+        // remove post from source
     }
 }

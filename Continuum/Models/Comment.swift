@@ -19,3 +19,14 @@ class Comment {
         self.post = post
     }
 }
+
+
+extension Comment: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        if text.lowercased().contains(searchTerm.lowercased()) {
+            return true
+        } else {
+            return false
+        }
+    }
+}
